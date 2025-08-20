@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vaquinha do Allan – Doe R$10</title>
+  <meta name="description" content="Ajude o Allan com uma doação de R$10. Página simples, bonita e pronta para compartilhar.">
+  <meta property="og:title" content="Vaquinha do Allan – Doe R$10">
+  <meta property="og:description" content="Ajude o Allan com uma doação de R$10. Clique para doar via PIX e compartilhar.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Vaquinha+do+Allan">
+  <meta name="theme-color" content="#6b46ff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0b0f1a; --bg2:#121a2b; --brand:#7c5cff; --brand-2:#31d0aa; --text:#e8ecf1; --muted:#9aa4b2; --card:#121625a6; --stroke:#27324a66;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;color:var(--text);
+      background: radial-gradient(1200px 800px at 10% 10%, #142041 0%, transparent 60%),
+                  radial-gradient(1200px 800px at 90% 10%, #2a1348 0%, transparent 60%),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));}
+    .wrap{max-width:960px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;gap:18px;margin:18px 0 28px}
+    .avatar{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#9d7cff,#31d0aa);padding:3px}
+    .avatar > img{width:100%;height:100%;display:block;border-radius:14px;object-fit:cover;background:#111}
+    .title h1{font-size:clamp(1.4rem,2vw+1rem,2.2rem);margin:0 0 4px;font-weight:800;letter-spacing:-0.02em}
+    .title p{margin:0;color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03));
+      border:1px solid var(--stroke);backdrop-filter: blur(10px);-webkit-backdrop-filter: blur(10px);
+      border-radius:20px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#0e162a;border:1px solid var(--stroke);color:#b9c4d6;font-weight:600;font-size:12px}
+    .badge svg{width:16px;height:16px}
+
+    .goal{margin:16px 0 6px;display:flex;align-items:center;justify-content:space-between}
+    .progress{height:14px;border-radius:999px;background:#0d1426;border:1px solid var(--stroke);position:relative;overflow:hidden}
+    .progress > span{position:absolute;inset:0;transform-origin:left center;transform:scaleX(0);
+      background:linear-gradient(90deg,var(--brand),#9d7cff 40%,#31d0aa 100%);
+      transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+
+    .btn{appearance:none;border:0;cursor:pointer;
+      background:linear-gradient(135deg,var(--brand),#9d7cff);
+      color:#fff;padding:12px 16px;border-radius:14px;font-weight:700;letter-spacing:.2px;
+      box-shadow:0 8px 20px rgba(124,92,255,.35);transition:transform .08s ease, box-shadow .2s}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(124,92,255,.45)}
+    .btn:active{transform:translateY(0)}
+
+    .btn-ghost{background:#0e162a;border:1px solid var(--stroke);color:var(--text);box-shadow:none}
+    .btn-ghost:hover{box-shadow:0 8px 18px rgba(0,0,0,.25)}
+
+    .field{display:flex;gap:10px;align-items:center}
+    .field input{flex:1;min-width:0;background:#0d1426;border:1px solid var(--stroke);color:var(--text);
+      border-radius:12px;padding:12px 14px;font-size:14px}
+    .mini{font-size:12px;color:var(--muted);margin-top:6px}
+
+    .stack{display:flex;flex-direction:column;gap:14px}
+    .hstack{display:flex;gap:10px;flex-wrap:wrap}
+
+    .qr img{width:100%;max-width:240px;border-radius:16px;border:1px dashed var(--stroke);display:block}
+
+    .share{display:grid;gap:10px;grid-template-columns:repeat(2,1fr)}
+    .share a{display:flex;align-items:center;justify-content:center;text-decoration:none}
+
+    footer{margin:26px 0 10px;text-align:center;color:#6c768a;font-size:12px}
+    .link{color:#cfd7ff}
+
+    .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+    .confetti i{position:absolute;width:8px;height:14px;opacity:.9}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="avatar"><img src="https://via.placeholder.com/256x256.png?text=Allan" alt="Foto do Allan" /></div>
+      <div class="title">
+        <h1>Vaquinha do Allan</h1>
+        <p>Ajude o Allan com uma contribuição única de <strong>R$10</strong>. Qualquer ajuda faz diferença! 💜</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <span class="badge" title="Meta pequena, impacto grande">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a1 1 0 0 1 .894.553l2.382 4.81 5.31.772a1 1 0 0 1 .554 1.705l-3.837 3.741.906 5.285a1 1 0 0 1-1.452 1.054L12 17.77l-4.757 2.49a1 1 0 0 1-1.452-1.054l.906-5.285L2.86 9.84a1 1 0 0 1 .554-1.705l5.31-.772 2.382-4.81A1 1 0 0 1 12 2z"/></svg>
+          Meta: R$10
+        </span>
+
+        <div class="goal">
+          <strong id="arrecadado-texto">Arrecadado: R$ 0,00</strong>
+          <span id="meta-texto" class="mini">Meta: R$ 10,00</span>
+        </div>
+        <div class="progress" aria-label="Progresso da vaquinha" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
+          <span id="bar"></span>
+        </div>
+        <p class="mini">Transparência: o valor é atualizado manualmente conforme as doações chegam.</p>
+
+        <div class="stack" style="margin-top:16px">
+          <div class="hstack">
+            <button class="btn" id="btn-doar">Doar via PIX</button>
+            <button class="btn btn-ghost" id="btn-compartilhar">Compartilhar</button>
+          </div>
+
+          <details open>
+            <summary style="cursor:pointer;color:#cfd7ff;font-weight:600">Dados do PIX</summary>
+            <div class="stack" style="margin-top:12px">
+              <label class="field" title="Clique para copiar a chave PIX">
+                <input id="pix-chave" value="536dd328-671d-420f-9d42-69bd943eaea8" readonly aria-label="Chave PIX">
+                <button class="btn btn-ghost" data-copy="#pix-chave">Copiar</button>
+              </label>
+              <div class="mini">Titular: DANIEL DE SOUZA</div>
+
+              <div class="hstack" style="align-items:flex-start;margin-top:6px">
+                <div class="qr"><img src="qrcode.jpg" alt="QR Code PIX"></div>
+                <div class="mini">Escaneie o QR Code para pagar via aplicativo do seu banco.</div>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary style="cursor:pointer;color:#cfd7ff;font-weight:600">Atualizar progresso (para o organizador)</summary>
+            <div class="stack" style="margin-top:12px">
+              <label class="field">
+                <input id="in-arrecadado" type="number" min="0" step="0.5" placeholder="Valor arrecadado (ex.: 7.50)">
+                <button class="btn btn-ghost" id="btn-atualizar">Atualizar</button>
+              </label>
+              <div class="mini">Somente para visual: altere quando receber novas doações.</div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h3 style="margin:6px 0 12px;font-size:1.1rem">Por que ajudar?</h3>
+        <p style="line-height:1.6;color:#c7cfdb">O Allan precisa de <strong>R$10</strong> para cobrir uma necessidade imediata. Sua doação, por menor que seja, tem um impacto real. Obrigado por apoiar! 💙</p>
+
+        <hr style="border:0;height:1px;background:linear-gradient(90deg,transparent,var(--stroke),transparent);margin:16px 0">
+
+        <div class="share">
+          <a id="share-whatsapp" class="btn" href="#" target="_blank" rel="noreferrer noopener">WhatsApp</a>
+          <a id="share-twitter" class="btn btn-ghost" href="#" target="_blank" rel="noreferrer noopener">X (Twitter)</a>
+        </div>
+        <p class="mini">Compartilhe com amigos e família para batermos a meta rapidinho! 🎯</p>
+      </aside>
+    </div>
+
+    <footer>
+      Feito com carinho. <a class="link" href="#" onclick="alert('Substitua os dados do PIX e publique em qualquer hospedagem.');return false;">Como usar</a>
+    </footer>
+  </div>
+
+  <div class="confetti" aria-hidden="true" id="fx"></div>
+
+  <script>
+    const META = 10;
+    let arrecadado = 0;
+
+    const fmt = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    function setProgress(valor){
+      arrecadado = Math.max(0, valor);
+      const pct = Math.min(1, arrecadado / META);
+      document.querySelector('.progress').setAttribute('aria-valuenow', String(arrecadado));
+      document.getElementById('bar').style.transform = `scaleX(${pct})`;
+      document.getElementById('arrecadado-texto').textContent = `Arrecadado: ${fmt(arrecadado)}`;
+      if(pct >= 1){ celebrate(); }
+    }
+
+    function celebrate(){
+      const fx = document.getElementById('fx');
+      fx.innerHTML = '';
+      const n = 120;
+      for(let i=0;i<n;i++){
+        const e = document.createElement('i');
+        e.style.left = (Math.random()*100)+"%";
+        e.style.top = (-10 - Math.random()*20)+"px";
+        e.style.background = `hsl(${Math.random()*360}, 90%, 60%)`;
+        e.style.transform = `rotate(${Math.random()*180}deg)`;
+        e.animate([
+          { transform: e.style.transform, top:e.style.top, opacity:1 },
+          { transform: `translateY(${100+Math.random()*40}vh) rotate(${180+Math.random()*180}deg)`, opacity:0 }
+        ], { duration: 2200 + Math.random()*1200, easing: 'cubic-bezier(.2,.8,.2,1)', fill:'forwards' });
+        fx.appendChild(e);
+      }
+    }
+
+    setProgress(arrecadado);
+    document.getElementById('meta-texto').textContent = `Meta: ${fmt(META)}`;
+
+    document.getElementById('btn-doar').addEventListener('click', () => {
+      const chave = document.getElementById('pix-chave').value.trim();
+      if(chave){
+        navigator.clipboard.writeText(chave).then(()=>{
+          alert('Chave PIX copiada! Abra o app do seu banco e cole para pagar.');
+        });
+      }
+    });
+
+    document.querySelectorAll('[data-copy]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = document.querySelector(btn.getAttribute('data-copy'));
+        if(target){ navigator.clipboard.writeText(target.value).then(()=> btn.textContent = 'Copiado!'); }
+      });
+    });
+
+    document.getElementById('btn-atualizar').addEventListener('click', () => {
+      const val = parseFloat(document.getElementById('in-arrecadado').value.replace(',', '.'));
+      if(!isNaN(val)) setProgress(val);
+    });
+
+    const shareText = 'Ajude o Allan com uma doação de R$10!';
+    const shareUrl = window.location.href;
+    document.getElementById('share-whatsapp').href = `https://wa.me/?text=${encodeURIComponent(shareText+' '+shareUrl)}`;
+    document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+    document.getElementById('btn-compartilhar').addEventListener('click', async () => {
+      if(navigator.share){
+        try{ await navigator.share({ title: 'Vaquinha do Allan', text: shareText, url: shareUrl }); }catch(e){}
+      } else {
+        window.open(document.getElementById('share-whatsapp').href, '_blank');
+      }
+    });
+  </script>
+</body>
+</html>
